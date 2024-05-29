@@ -14,20 +14,20 @@ const Navbar = () => {
     <div className="collapse navbar-collapse" id="navbarColor03">
       <ul className="navbar-nav me-auto">
         <li className="nav-item">
-          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="home">Home
+          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/">Home
             <span className="visually-hidden">(current)</span>
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className= {`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="products">Products</NavLink>
+          <NavLink className= {`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/products">Products</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="about">About</NavLink>
+          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/about">About</NavLink>
         </li>
       </ul>
 
         <button className="btn btn-primary bg-dark m-2">
-          <Link className="nav-link" to="cart"><BsCartFill />Cart(0)</Link>
+          <Link className="nav-link" to="/cart"><BsCartFill />Cart(0)</Link>
         </button>
     </div>
   </div>
