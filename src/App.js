@@ -1,10 +1,22 @@
 import './App.css';
+import Navbar from './components/Navbar';
+import Home from "./components/Home";
+import ProductList from './components/ProductList';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>React web-shop</h1>
-    </div>
+    <>
+    <Router>
+    <Navbar/>
+    <Home/>
+    <ProductList/>
+    <Routes>
+    </Routes>
+    </Router>
+    </>
   );
 }
 
