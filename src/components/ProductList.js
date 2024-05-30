@@ -8,10 +8,11 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
   useEffect(() => {
      
     setLoading(true);
-    fetch('https://dummyjson.com/products?limit=0&&skip=0')
+    fetch('https://dummyjson.com/products')
     .then((res) => res.json())
     .then((json) => {
       setProducts(json.products);
@@ -34,13 +35,16 @@ const ProductList = () => {
     setProducts(updatedList);
     
   }
+  
+
+ 
 
   const ShowProducts = () => {
   
     return (
       <>
         <div className="buttons d-flex justify-content-center mp-5 pb-5">
-          <button onClick={()=> setProducts(products)} className="btn btn-outline-dark me-2">ALL</button>
+          <button className="btn btn-outline-dark me-2">ALL</button>
           <button onClick ={ () => filterProducts("beauty")} className="btn btn-outline-dark me-2">Beauty</button>
           <button onClick ={ () => filterProducts("smartphones")} className="btn btn-outline-dark me-2">smartphones</button>
           <button onClick ={ () => filterProducts("mens-watches")} className="btn btn-outline-dark me-2">mens-watches</button>

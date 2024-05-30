@@ -5,9 +5,9 @@ import { BsCartFill } from "react-icons/bs";
 const Navbar = () => {
   return (
     <>
-    <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+    <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div className="container-fluid">
-    <Link className="navbar-brand" to="/">WEBSHOP 2024</Link>
+    <Link className="navbar-brand fw-bold" to="/">WEBSHOP 2024</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -24,10 +24,13 @@ const Navbar = () => {
         <li className="nav-item">
           <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/about">About</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/contact">Contact</NavLink>
+        </li>
       </ul>
 
-        <button className="btn btn-primary bg-dark m-2">
-          <Link className="nav-link" to="/cart"><BsCartFill />Cart(0)</Link>
+        <button className="btn btn-primary bg-primary m-2">
+          <Link className="nav-link" to="/cart"><BsCartFill /> Cart (0)</Link>
         </button>
     </div>
   </div>
