@@ -25,12 +25,13 @@ const handleSubmit = (e) => {
         text: "Your feedback has been sent.",
         icon: "success"
       });
+      
+      setText("");
     }
     
      
   });
 
-  setText("");
 }
  
 

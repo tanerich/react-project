@@ -1,8 +1,16 @@
 import React from "react";
 import {NavLink, Link } from "react-router-dom";
 import { BsCartFill } from "react-icons/bs";
+import { useSelector } from "react-redux";
+
+
+
 
 const Navbar = () => {
+
+
+const state = useSelector((state) => state.handleCart)
+
   return (
     <>
     <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
@@ -30,7 +38,7 @@ const Navbar = () => {
       </ul>
 
         <button className="btn btn-primary bg-primary m-2">
-          <Link className="nav-link" to="/cart"><BsCartFill /> Cart (0)</Link>
+          <Link className="nav-link" to="/cart"><BsCartFill/> Cart {state.length}</Link>
         </button>
     </div>
   </div>

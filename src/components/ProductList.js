@@ -12,6 +12,7 @@ const ProductList = () => {
   useEffect(() => {
      
     setLoading(true);
+    
     fetch('https://dummyjson.com/products')
     .then((res) => res.json())
     .then((json) => {
@@ -30,32 +31,18 @@ const ProductList = () => {
     )
   };
 
-  const filterProducts = (cat) => {
-    const updatedList = products.filter((item) => item.category === cat)
-    setProducts(updatedList);
-    
-  }
   
-
- 
 
   const ShowProducts = () => {
   
     return (
       <>
-        <div className="buttons d-flex justify-content-center mp-5 pb-5">
-          <button className="btn btn-outline-dark me-2">ALL</button>
-          <button onClick ={ () => filterProducts("beauty")} className="btn btn-outline-dark me-2">Beauty</button>
-          <button onClick ={ () => filterProducts("smartphones")} className="btn btn-outline-dark me-2">smartphones</button>
-          <button onClick ={ () => filterProducts("mens-watches")} className="btn btn-outline-dark me-2">mens-watches</button>
-          <button onClick ={ () => filterProducts("tablets")} className="btn btn-outline-dark me-2">tablets</button>
-        </div>
         {products.map((product) => (
     <div key={product.id} className="col-md-3 mb-4">
     <div className="card h-100 text-center p-4 ">
         <img src={product.thumbnail} className="card-img-top"/>
         <div className="card-body">
-            <h5 className="card-title">{product.title.substring(0,12)}...</h5>
+            <h5 className="card-title">{product.title.substring(0,11)}...</h5>
             <p className="card-text fw-bold">${product.price}</p>
             <NavLink to={`/products/${product.id}`} className="btn btn-primary">Buy Now</NavLink>
         </div>
