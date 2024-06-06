@@ -36,9 +36,8 @@ const state = useSelector((state) => state.handleCart)
           <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/contact">Contact</NavLink>
         </li>
       </ul>
-
         <button className="btn btn-primary bg-primary m-2">
-          <Link className="nav-link" to="/cart"><BsCartFill/> Cart {state.length}</Link>
+          <Link className="nav-link" to="/cart"><BsCartFill/> Cart ({state.length})</Link>
         </button>
     </div>
   </div>

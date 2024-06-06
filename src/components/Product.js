@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { addCart} from "../redux/action"
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom"
+import Swal from 'sweetalert2';
 
 
 const Product = () => {
@@ -10,11 +11,15 @@ const Product = () => {
   const {id} = useParams();
   const[product, setProduct] = useState([]);
   const[loading, setLoading] = useState(false);
-
-
   const dispatch = useDispatch();
+
+
   const addProduct = (product) => {
-    dispatch(addCart(product));
+    dispatch(addCart(product)) 
+     Swal.fire({
+      title: `${product.title} added to CART!`,
+      icon: "success"
+    });
   }
 
 
@@ -54,7 +59,7 @@ return (
     <p className="lead">Rating {product.rating}</p>
     <h3 className="display-6 fw-bold my-4">${product.price}</h3>
     <p className="lead">{product.description}</p>
-    <button onClick={() => addProduct} className="btn btn-outline-dark px-4 py-2">Add to Cart</button>
+    <button onClick={() => addProduct(product)} className="btn btn-outline-dark px-4 py-2">Add to Cart</button>
     <NavLink to="/cart" className="btn btn-dark ms-2 px-3">Go to Cart</NavLink>
    </div>
 
