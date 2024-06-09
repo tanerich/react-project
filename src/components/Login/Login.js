@@ -27,7 +27,7 @@ setFormData({
 
 };
 
-const handleSubmit = async(e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
 
     let data = await fetch (`${BASE_API_URL}/auth/login`, {
@@ -50,7 +50,7 @@ else {
     );
 
     Swal.fire({
-        title:`Welcome Back ${res.firstName}!!`,
+        title:`Welcome ${res.firstName}!!`,
         icon:"success"
     })
     nav("/products");
@@ -67,13 +67,13 @@ return (
             <form onSubmit={handleSubmit} className="form-group">
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
-                    <input value={formData.username}  onChange={handleChange}type="text" className="form-control" id="username" placeholder="Enter Username" required />
+                    <input value={formData.username}  onChange={handleChange} type="text" className="form-control" id="username" placeholder="Enter Username" required />
                 </div>
                 
                 <div className="form-group mb-4">
                     <label htmlFor="password">Password</label>
                     <br/>
-                    <input value={formData.password} onChange={handleChange} type="password" className="form-control" placeholder="Enter Password" id="password" required />
+                    <input value={formData.password} onChange={handleChange} type="password" className="form-control" name="password" placeholder="Enter Password" id="password" required />
                 </div>
                 <button  type="submit" className="btn btn-primary costum-btn">
                     Login

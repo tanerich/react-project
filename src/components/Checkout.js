@@ -13,15 +13,39 @@ const Checkout = () => {
 // Function to handle the checkout process
     const handleCheckout = (e) => {
         e.preventDefault();
+
         localStorage.setItem("ecc-user-cart", JSON.stringify([]));
         localStorage.setItem("ecc-final-cart-value", 0);
-
-
+        
+      
         Swal.fire({
-            title:"Order submitted!!",
-            icon:"success"
-        })
+            title: "Are you sure you wanna submit the order?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, send!"
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "ORDER SUBMITED!!",
+                    text: "Your order has been submited.",
+                    icon: "success"
+
+            })
+            
+            };
+
+            setTimeout(() => {
+                window.location.reload();
+            },1000);
+      
+
+     })
     }
+
+
 
     return (
         <>
@@ -193,4 +217,4 @@ const Checkout = () => {
     )
 }
 
-export default Checkout
+export default Checkout;

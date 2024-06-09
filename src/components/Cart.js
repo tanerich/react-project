@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import Swal from "sweetalert2"
-import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
 const Cart = ({ sendCartProducts, cartItems }) => {
@@ -12,9 +12,6 @@ const Cart = ({ sendCartProducts, cartItems }) => {
         setCartProducts(cartItems);
     }, [cartItems])
 
-
-// useNavigate hook to programmatically navigate to different hooks
-const nav = useNavigate();
 
 // function to handle removal of a product from the cart
 const handleFilterCart = (clickedProduct) => {
@@ -45,7 +42,7 @@ const fetchTotalPrice = () => {
 
     let cartValue = cartProducts.reduce((acc, item) => acc + item.price, 0);
     localStorage.setItem("ecc-final-cart-value", cartValue);
-    return cartValue;
+    return cartValue ;
 };
 
 
@@ -57,20 +54,31 @@ return (
     {cartProducts?.length === 0 ? (
         <>
         <h1 className="text-center">Your cart is empty</h1>
-        <button onClick={() => nav("/products")} type="submit" className="btn btn-primary">
-            Products
+        <div className="text-center">
+
+        <Link to="/products">
+        <button type="submit" className="btn btn-primary">
+         Navigate to Products
         </button>
+        </Link>
+
+        </div>
         </>
     ): (
      <>
      {/* Displaying total price if the cart has products */}
-     <h3 className="text-center mx-10"></h3>
+     <h3 className="text-center mx-10 text-center">
+
      <strong>Total price:</strong>
      {fetchTotalPrice()}
-     <div>
-        <button onClick={ nav("/checkout")} className="btn btn-primary" type="submit">
+
+     </h3>
+     <div className="text-center">
+        <Link to="/checkout">
+        <button  className="btn btn-primary" type="submit">
          Checkout
         </button>
+        </Link>
         
      </div>
      </>

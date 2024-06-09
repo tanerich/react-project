@@ -10,16 +10,6 @@ const handleSubmit = (e) => {
   e.preventDefault();
 
 
-  Swal.fire({
-    title: "Are you sure you wanna leave a feedback?",
-    icon: "question",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, send!"
-  })
-  .then((result) => {
-    if (result.isConfirmed) {
       Swal.fire({
         title: "Sent!",
         text: "Your feedback has been sent.",
@@ -27,12 +17,9 @@ const handleSubmit = (e) => {
       });
       
       setText("");
-    }
-    
-     
-  });
 
-}
+      }
+      
  
 
 const textInput = (e) => {
