@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom"
 import Swal from 'sweetalert2';
-import { BASE_API_URL, getCartData, getUserFromLocalStorage} from "../utils/services";
+import { BASE_API_URL, getUserFromLocalStorage} from "../utils/services";
 
 
 

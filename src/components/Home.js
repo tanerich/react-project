@@ -1,12 +1,12 @@
 import React from "react";
-import ProductList from "./ProductList";
+
 
 const Home = () => {
   return (
     <>
     <div className="hero">
       <div className="card bg-dark text-white border-0">
-        <img src="/assets/bg-img.jpg" className="card-img"  height="780px"/>
+        <img src="/assets/bg-img.jpg" alt="bg-img" className="card-img"  height="780px"/>
           <div className="card-img-overlay d-flex flex-column justify-content-center">
             <div className="container">
               <h5 className="card-title text-dark display-3  fw-bolder mb-0">

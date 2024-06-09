@@ -41,7 +41,7 @@ const ProductList = () => {
         {products.map((product) => (
     <div key={product.id} className="col-md-3 mb-4">
     <div className="card h-100 text-center p-4 ">
-        <img src={product.thumbnail} className="card-img-top"/>
+        <img src={product.thumbnail} alt={product.title} className="card-img-top"/>
         <div className="card-body">
             <h5 className="card-title">{product.title.substring(0,11)}...</h5>
             <p className="card-text fw-bold">${product.price}</p>
