@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { BASE_API_URL } from "../utils/services";
 
 
 
@@ -13,7 +14,7 @@ const ProductList = () => {
      
     setLoading(true);
     
-    fetch('https://dummyjson.com/products')
+    fetch(`${BASE_API_URL}/products`)
     .then((res) => res.json())
     .then((json) => {
       setProducts(json.products);

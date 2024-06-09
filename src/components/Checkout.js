@@ -1,12 +1,21 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import Swal from "sweetalert2"
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
-    const state = useSelector((state) => state.addItem)
+    const state = useSelector((state) => state.addItem);
+     
 
-    var total = 0;
+    // getting the total price from local storage or setting it to '0' if not available
+    let total = localStorage.getItem("ecc-final-cart-value") || 0;
+
+
+
+    // Function to render each item in the cart and add it's price to the total
     const itemList = (item) => {
         total = total + item.price;
+
+
         return (
             <li className="list-group-item d-flex justify-content-between lh-sm">
                 <div>
@@ -17,6 +26,18 @@ const Checkout = () => {
         );
     }
 
+// Function to handle the checkout process
+    const handleCheckout = (e) => {
+        e.preventDefault();
+        localStorage.setItem("ecc-user-cart", JSON.stringify([]));
+        localStorage.setItem("ecc-final-cart-value", 0);
+
+        Swal.fire({
+            title:"Order submitted!!",
+            icon:"success"
+        })
+    }
+
     return (
         <>
             <div className="container my-5">
@@ -24,11 +45,9 @@ const Checkout = () => {
                     <div className="col-md-5 col-lg-4 order-md-last">
                         <h4 className="d-flex justify-content-between align-items-center mb-3">
                             <span className="text-primary">Your cart</span>
-                            <span className="badge bg-primary rounded-pill">{state.length}</span>
+                            <span className="badge bg-primary rounded-pill">{state.length || 0}</span>
                         </h4>
                         <ul className="list-group mb-3">
-                            {state.map(itemList)}
-
                             <li className="list-group-item d-flex justify-content-between">
                                 <span>Total (USD)</span>
                                 <strong>${total}</strong>
@@ -193,7 +212,7 @@ const Checkout = () => {
 
                             <hr className="my-4" />
 
-                            <button className="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                            <button onClick={handleCheckout} className="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                         </form>
                     </div>
                 </div>

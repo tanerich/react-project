@@ -1,15 +1,20 @@
 import React from "react";
-import {NavLink, Link } from "react-router-dom";
+import {NavLink, Link, useNavigate } from "react-router-dom";
 import { BsCartFill } from "react-icons/bs";
-import { useSelector } from "react-redux";
 
 
 
 
-const Navbar = () => {
+const Navbar = ({ cartData }) => {
+
+  const nav = useNavigate();
+
+  const fetchCartLength = () => {
+
+    return cartData.length;
+  };
 
 
-const state = useSelector((state) => state.handleCart)
 
   return (
     <>
@@ -35,9 +40,12 @@ const state = useSelector((state) => state.handleCart)
         <li className="nav-item">
           <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/contact">Contact</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/login">Login</NavLink>
+        </li>
       </ul>
         <button className="btn btn-primary bg-primary m-2">
-          <Link className="nav-link" to="/cart"><BsCartFill/> Cart ({state.length})</Link>
+          <Link className="nav-link" to="/cart"><BsCartFill/> Cart ({fetchCartLength()})</Link>
         </button>
     </div>
   </div>
