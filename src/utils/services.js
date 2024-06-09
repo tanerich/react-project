@@ -1,4 +1,4 @@
-export const BASE_API_URL = "https://dummyjason.com";
+export const BASE_API_URL = "https://dummyjson.com";
 
 
 // Function to get user data from local sorage

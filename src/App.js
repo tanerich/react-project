@@ -49,7 +49,7 @@ function App() {
      {/*function to handle updating cart product*/}
     <Route path="/cart" element={<Cart cartItems={cartData}  sendCartProducts ={(e) => {
       setCartData(e);
-      localStorage.setItem("exx-user-cart", JSON.stringify(e));
+      localStorage.setItem("ecc-user-cart", JSON.stringify(e));
     }} />}/>
     <Route path="/checkout" element={<Checkout/>}/>
     <Route path="/about" element={<About/>}/>

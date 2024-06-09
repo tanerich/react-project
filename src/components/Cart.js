@@ -6,20 +6,27 @@ import { useNavigate } from 'react-router-dom';
 const Cart = ({ sendCartProducts, cartItems }) => {
     const [cartProducts, setCartProducts] = useState([]);
 
+
+    // useEffect hook to update the cartProducts state whenever carItems prop changes
     useEffect(() => {
         setCartProducts(cartItems);
     }, [cartItems])
 
+
+// useNavigate hook to programmatically navigate to different hooks
 const nav = useNavigate();
 
-
+// function to handle removal of a product from the cart
 const handleFilterCart = (clickedProduct) => {
 
 
 let updatedCart = [...cartProducts];
 
+// filtering out the products to be removed from the cart
 let finalUpdatedProducts = updatedCart.filter((p) => p.id !== clickedProduct.id);
 
+
+// updating the cart state and notifying the parent component
 updatedCart = finalUpdatedProducts;
 
 sendCartProducts(updatedCart);
@@ -33,7 +40,7 @@ Swal.fire({
 
 };
 
-
+// function to calculate to total price of the cart items
 const fetchTotalPrice = () => {
 
     let cartValue = cartProducts.reduce((acc, item) => acc + item.price, 0);
@@ -46,6 +53,7 @@ const fetchTotalPrice = () => {
 
 return (
     <>
+    {/* Displaying a message if the cart is empty */}
     {cartProducts?.length === 0 ? (
         <>
         <h1 className="text-center">Your cart is empty</h1>
@@ -55,7 +63,7 @@ return (
         </>
     ): (
      <>
-     
+     {/* Displaying total price if the cart has products */}
      <h3 className="text-center mx-10"></h3>
      <strong>Total price:</strong>
      {fetchTotalPrice()}
@@ -67,7 +75,7 @@ return (
      </div>
      </>
     )}
-
+{/* Mapping throught cartProducts to display each product */}
     {cartProducts.map((cart) => (
     <div className="px-4 my-5 bg-light rounded-3" key={cart.id}>
                 <div className="container py-4">

@@ -1,36 +1,21 @@
 import React from 'react'
 import Swal from "sweetalert2"
-import { useSelector } from "react-redux";
 
 const Checkout = () => {
-    const state = useSelector((state) => state.addItem);
      
 
     // getting the total price from local storage or setting it to '0' if not available
     let total = localStorage.getItem("ecc-final-cart-value") || 0;
+    let cartLength = JSON.parse(localStorage.getItem("ecc-use-cart"));
 
 
-
-    // Function to render each item in the cart and add it's price to the total
-    const itemList = (item) => {
-        total = total + item.price;
-
-
-        return (
-            <li className="list-group-item d-flex justify-content-between lh-sm">
-                <div>
-                    <h6 className="my-0">{item.title}</h6>
-                </div>
-                <span className="text-muted">${item.price}</span>
-            </li>
-        );
-    }
 
 // Function to handle the checkout process
     const handleCheckout = (e) => {
         e.preventDefault();
         localStorage.setItem("ecc-user-cart", JSON.stringify([]));
         localStorage.setItem("ecc-final-cart-value", 0);
+
 
         Swal.fire({
             title:"Order submitted!!",
@@ -45,7 +30,7 @@ const Checkout = () => {
                     <div className="col-md-5 col-lg-4 order-md-last">
                         <h4 className="d-flex justify-content-between align-items-center mb-3">
                             <span className="text-primary">Your cart</span>
-                            <span className="badge bg-primary rounded-pill">{state.length || 0}</span>
+                            <span className="badge bg-primary rounded-pill">{cartLength}</span>
                         </h4>
                         <ul className="list-group mb-3">
                             <li className="list-group-item d-flex justify-content-between">
@@ -67,7 +52,7 @@ const Checkout = () => {
                             <div className="row g-3">
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
-                                    <input type="text" className="form-control" id="firstName" placeholder="" value="" required="" />
+                                    <input type="text" className="form-control" id="firstName" placeholder=""  required="" />
                                     <div className="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -75,20 +60,9 @@ const Checkout = () => {
 
                                 <div className="col-sm-6">
                                     <label htmlFor="lastName" className="form-label">Last name</label>
-                                    <input type="text" className="form-control" id="lastName" placeholder="" value="" required="" />
+                                    <input type="text" className="form-control" id="lastName" placeholder=""  required="" />
                                     <div className="invalid-feedback">
                                         Valid last name is required.
-                                    </div>
-                                </div>
-
-                                <div className="col-12">
-                                    <label htmlFor="username" className="form-label">Username</label>
-                                    <div className="input-group has-validation">
-                                        <span className="input-group-text">@</span>
-                                        <input type="text" className="form-control" id="username" placeholder="Username" required="" />
-                                        <div className="invalid-feedback">
-                                            Your username is required.
-                                        </div>
                                     </div>
                                 </div>
 
@@ -108,16 +82,11 @@ const Checkout = () => {
                                     </div>
                                 </div>
 
-                                <div className="col-12">
-                                    <label htmlFor="address2" className="form-label">Address 2 <span className="text-muted">(Optional)</span></label>
-                                    <input type="text" className="form-control" id="address2" placeholder="Apartment or suite" />
-                                </div>
-
                                 <div className="col-md-5">
                                     <label htmlFor="country" className="form-label">Country</label>
                                     <select className="form-select" id="country" required="">
                                         <option value="">Choose...</option>
-                                        <option>United States</option>
+                                        <option>Sweden</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please select a valid country.
@@ -128,7 +97,10 @@ const Checkout = () => {
                                     <label htmlFor="state" className="form-label">State</label>
                                     <select className="form-select" id="state" required="">
                                         <option value="">Choose...</option>
-                                        <option>California</option>
+                                        <option>Stockholm</option>
+                                        <option>Göteborg</option>
+                                        <option>Mälmö</option>
+                                        <option>Uppsala</option>
                                     </select>
                                     <div className="invalid-feedback">
                                         Please provide a valid state.
