@@ -1,12 +1,13 @@
 import React from 'react'
 import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 
 const Checkout = () => {
      
 
     // getting the total price from local storage or setting it to '0' if not available
     let total = localStorage.getItem("ecc-final-cart-value") || 0;
-    
+    const nav = useNavigate();
 
 
 
@@ -36,10 +37,11 @@ const Checkout = () => {
                     })
                         setTimeout(() => {
                             window.location.reload();
-                        },1000);
-            
-            } 
-              
+                            },1000);
+                            
+                            } 
+                            
+                            nav("/products");
 
      })
     }
