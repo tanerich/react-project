@@ -52,7 +52,7 @@ const Product = ({sendNewProduct}) => {
 
     }
     getProduct()
-  },[])
+  },[]);
 
 const Loading = () => {
   return (

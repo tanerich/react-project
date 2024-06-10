@@ -53,12 +53,12 @@ return (
     {/* Displaying a message if the cart is empty */}
     {cartProducts?.length === 0 ? (
         <>
-        <h1 className="text-center">Your cart is empty</h1>
+        <h1 className="text-center mb-3 mt-4">Your cart is empty</h1>
         <div className="text-center">
 
         <Link to="/products">
-        <button type="submit" className="btn btn-primary">
-         Navigate to Products
+        <button type="submit" className="btn btn-success text-dark">
+         Back to Products
         </button>
         </Link>
 
