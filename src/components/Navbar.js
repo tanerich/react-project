@@ -38,9 +38,6 @@ const Navbar = ({ cartData }) => {
         <li className="nav-item">
           <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/contact">Contact</NavLink>
         </li>
-        <li className="nav-item">
-          <NavLink className={`nav-link ${(navData) => (navData.isActive ? "active" : "")}`} to="/login">Login</NavLink>
-        </li>
       </ul>
         <button className="btn btn-primary bg-primary m-2">
           <Link className="nav-link" to="/cart"><BsCartFill/> Cart ({fetchCartLength()})</Link>

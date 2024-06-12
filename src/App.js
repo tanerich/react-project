@@ -8,7 +8,6 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
-import Login from "./components/Login/Login"
 import { useState, useEffect} from "react"
 import { getCartData } from "./utils/services"
 
@@ -57,7 +56,6 @@ function App() {
     <Route path="/checkout" element={<Checkout/>}/>
     <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<Contact/>}/>
-    <Route path="/login" element={<Login/>}/>
     </Routes>
     </Router>
     </>
