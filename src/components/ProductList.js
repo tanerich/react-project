@@ -18,7 +18,7 @@ const ProductList = () => {
     .then((res) => res.json())
     .then((json) => {
       setProducts(json.products);
-      console.log("Hello",json);
+      //console.log(json);
       setLoading(false);
     })
     

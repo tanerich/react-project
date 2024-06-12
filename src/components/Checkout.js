@@ -35,11 +35,13 @@ const Checkout = () => {
                     icon: "success"
                     
                     })
+                    
                     setTimeout(() => {
                         window.location.reload();
                         },1000);
-                            
                     nav("/products");
+
+
                             } else {
                                 Swal.fire({
                                     title: "Oops :(",
@@ -66,7 +68,7 @@ const Checkout = () => {
                         <ul className="list-group mb-3">
                             <li className="list-group-item d-flex justify-content-between">
                                 <span>Total (USD)</span>
-                                <strong>${total}</strong>
+                                <strong>${`${Math.round(total)}`}</strong>
                             </li>
                         </ul>
 

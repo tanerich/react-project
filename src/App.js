@@ -17,6 +17,9 @@ import { getCartData } from "./utils/services"
 function App() {
 
   const [cartData, setCartData] = useState([]); // Definning the state to hold cart data
+
+
+  
   //const {id, auth} = getUserFromLocalStorage(); // Destructuring user id and auth status from local staorage
 
 

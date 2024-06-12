@@ -31,7 +31,7 @@ sendCartProducts(updatedCart);
 setCartProducts(updatedCart);
 
 Swal.fire({
-    title: "Product Removed from cart!!",
+    title: "product Removed from cart!!",
     icon: "success"
 })
 
@@ -42,7 +42,7 @@ const fetchTotalPrice = () => {
 
     let cartValue = cartProducts.reduce((acc, curr) => acc + curr.price, 0);
     localStorage.setItem("ecc-final-cart-value", cartValue);
-    return Math.floor(cartValue) ;
+    return Math.round(cartValue) ;
 };
 
 
