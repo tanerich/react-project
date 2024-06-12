@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom"
 
 const Checkout = () => {
      
+    const nav = useNavigate();
 
     // getting the total price from local storage or setting it to '0' if not available
     let total = localStorage.getItem("ecc-final-cart-value") || 0;
-    const nav = useNavigate();
 
 
 
@@ -16,7 +16,7 @@ const Checkout = () => {
         e.preventDefault();
 
         localStorage.setItem("ecc-user-cart", JSON.stringify([]));
-        localStorage.setItem("ecc-final-cart-value", 0);
+        
         
       
         Swal.fire({
@@ -35,13 +35,20 @@ const Checkout = () => {
                     icon: "success"
                     
                     })
-                        setTimeout(() => {
-                            window.location.reload();
-                            },1000);
+                    setTimeout(() => {
+                        window.location.reload();
+                        },1000);
                             
-                            } 
+                    nav("/products");
+                            } else {
+                                Swal.fire({
+                                    title: "Oops :(",
+                                    text: "Please complete your order.",
+                                    icon: "warning"
+                                    
+                                    });
+                            }
                             
-                            nav("/products");
 
      })
     }
@@ -77,22 +84,16 @@ const Checkout = () => {
                                 <div className="col-sm-6">
                                     <label htmlFor="firstName" className="form-label">First name</label>
                                     <input type="text" className="form-control" id="firstName"  required />
-                                    <div className="invalid-feedback">
-                                        Valid first name is required.
-                                    </div>
                                 </div>
 
                                 <div className="col-sm-6">
                                     <label htmlFor="lastName" className="form-label">Last name</label>
                                     <input type="text" className="form-control" id="lastName" placeholder=""  required />
-                                    <div className="invalid-feedback">
-                                        Valid last name is required.
-                                    </div>
                                 </div>
 
                                 <div className="col-12">
-                                    <label htmlFor="email" className="form-label">Email <span className="text-muted">(Optional)</span></label>
-                                    <input type="email" className="form-control" id="email" placeholder="you@example.com" />
+                                    <label htmlFor="email" className="form-label">Email</label>
+                                    <input type="email" className="form-control" id="email" placeholder="" />
                                 </div>
 
                                 <div className="col-md-5">
@@ -101,9 +102,6 @@ const Checkout = () => {
                                         <option value="">Choose...</option>
                                         <option>Sweden</option>
                                     </select>
-                                    <div className="invalid-feedback">
-                                        Please select a valid country.
-                                    </div>
                                 </div>
 
                                 <div className="col-md-4">
@@ -115,17 +113,11 @@ const Checkout = () => {
                                         <option>Mälmö</option>
                                         <option>Uppsala</option>
                                     </select>
-                                    <div className="invalid-feedback">
-                                        Please provide a valid state.
-                                    </div>
                                 </div>
 
                                 <div className="col-md-3">
                                     <label htmlFor="zip" className="form-label">Zip</label>
                                     <input type="text" className="form-control" id="zip" placeholder="" required />
-                                    <div className="invalid-feedback">
-                                        Zip code required.
-                                    </div>
                                 </div>
                             </div>
 
@@ -135,7 +127,7 @@ const Checkout = () => {
 
                             <div className="my-3">
                                 <div className="form-check">
-                                    <input id="credit" name="paymentMethod" type="radio" className="form-check-input" checked="" required />
+                                    <input id="credit" name="paymentMethod" type="radio" className="form-check-input"  required />
                                     <label className="form-check-label" htmlFor="credit">Credit card</label>
                                 </div>
                                 <div className="form-check">
@@ -153,33 +145,21 @@ const Checkout = () => {
                                     <label htmlFor="cc-name" className="form-label">Name on card</label>
                                     <input type="text" className="form-control" id="cc-name" placeholder="" required />
                                     <small className="text-muted">Full name as displayed on card</small>
-                                    <div className="invalid-feedback">
-                                        Name on card is required
-                                    </div>
                                 </div>
 
                                 <div className="col-md-6">
                                     <label htmlFor="cc-number" className="form-label">Credit card number</label>
                                     <input type="text" className="form-control" id="cc-number" placeholder="" required />
-                                    <div className="invalid-feedback">
-                                        Credit card number is required
-                                    </div>
                                 </div>
 
                                 <div className="col-md-3">
                                     <label htmlFor="cc-expiration" className="form-label">Expiration</label>
                                     <input type="text" className="form-control" id="cc-expiration" placeholder="" required />
-                                    <div className="invalid-feedback">
-                                        Expiration date required
-                                    </div>
                                 </div>
 
                                 <div className="col-md-3">
                                     <label htmlFor="cc-cvv" className="form-label">CVV</label>
                                     <input type="text" className="form-control" id="cc-cvv" placeholder="" required />
-                                    <div className="invalid-feedback">
-                                        Security code required
-                                    </div>
                                 </div>
                             </div>
 

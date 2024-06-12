@@ -20,7 +20,7 @@ const handleFilterCart = (clickedProduct) => {
 let updatedCart = [...cartProducts];
 
 // filtering out the products to be removed from the cart
-let finalUpdatedProducts = updatedCart.filter((p) => p.id !== clickedProduct.id);
+let finalUpdatedProducts = updatedCart.filter((product) => product.id !== clickedProduct.id);
 
 
 // updating the cart state and notifying the parent component
@@ -40,9 +40,9 @@ Swal.fire({
 // function to calculate to total price of the cart items
 const fetchTotalPrice = () => {
 
-    let cartValue = cartProducts.reduce((acc, item) => acc + item.price, 0);
+    let cartValue = cartProducts.reduce((acc, curr) => acc + curr.price, 0);
     localStorage.setItem("ecc-final-cart-value", cartValue);
-    return cartValue ;
+    return Math.floor(cartValue) ;
 };
 
 
@@ -69,8 +69,9 @@ return (
      {/* Displaying total price if the cart has products */}
      <h3 className="text-center mx-10 text-center">
 
-     <strong>Total price:</strong>
-     {fetchTotalPrice()}
+     <strong>Total price: 
+     </strong>
+     {` $${fetchTotalPrice()}`}
 
      </h3>
      <div className="text-center">
@@ -83,6 +84,8 @@ return (
      </div>
      </>
     )}
+
+
 {/* Mapping throught cartProducts to display each product */}
     {cartProducts.map((cart) => (
     <div className="px-4 my-5 bg-light rounded-3" key={cart.id}>
@@ -94,7 +97,7 @@ return (
                         </div>
                         <div className="col-md-4">
                             <h3>{cart?.title}</h3>
-                            <p className="lead fw-bold">${cart.price}</p>
+                            <p className="lead fw-bold">${cart?.price}</p>
                         </div>
                     </div>
                 </div>

@@ -10,22 +10,22 @@ import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import Login from "./components/Login/Login"
 import { useState, useEffect} from "react"
-import { getCartData, getUserFromLocalStorage} from "./utils/services"
+import { getCartData } from "./utils/services"
 
 
 
 function App() {
 
   const [cartData, setCartData] = useState([]); // Definning the state to hold cart data
-  const {id, auth} = getUserFromLocalStorage(); // Destructuring user id and auth status from local staorage
+  //const {id, auth} = getUserFromLocalStorage(); // Destructuring user id and auth status from local staorage
 
 
 
-  // useEffect hook to load cart data when component mount or when id/auth changes
+  // useEffect hook to load cart data when component mount.
   useEffect(() =>{
     let cartData = getCartData();
     setCartData(cartData);
-  },[id, auth]);
+  },[]);
 
 
   return (

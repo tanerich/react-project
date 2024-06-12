@@ -12,7 +12,7 @@ const handleSubmit = (e) => {
 
       Swal.fire({
         title: "Sent!",
-        text: "Your feedback has been sent.",
+        text: " Thank you!! Your feedback has been sent.",
         icon: "success"
       });
       

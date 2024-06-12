@@ -18,7 +18,7 @@ const ProductList = () => {
     .then((res) => res.json())
     .then((json) => {
       setProducts(json.products);
-      //console.log(json);
+      console.log("Hello",json);
       setLoading(false);
     })
     
@@ -43,7 +43,7 @@ const ProductList = () => {
     <div className="card h-100 text-center p-4 ">
         <img src={product.thumbnail} alt={product.title} className="card-img-top"/>
         <div className="card-body">
-            <h5 className="card-title">{product.title.substring(0,11)}...</h5>
+            <h5 className="card-title">{product.title.substring(0,12)}...</h5>
             <p className="card-text fw-bold">${product.price}</p>
             <NavLink to={`/products/${product.id}`} className="btn btn-primary">Buy Now</NavLink>
         </div>

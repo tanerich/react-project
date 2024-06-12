@@ -6,7 +6,7 @@ export const BASE_API_URL = "https://dummyjson.com";
 // Returns the JSON string into an object
 // Returns an empty object if no data is found or if parsing fails
 
-export const getUserFromLocalStorage = () => JSON.parse(localStorage.getItem("ecc-auth-user")) || {};
+//export const getUserFromLocalStorage = () => JSON.parse(localStorage.getItem("ecc-auth-user")) || {};
 
 
 
