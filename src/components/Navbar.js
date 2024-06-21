@@ -1,11 +1,21 @@
 import React from "react";
 import {NavLink, Link } from "react-router-dom";
 import { BsCartFill } from "react-icons/bs";
+import { useContext } from "react";
+import { ProductContext} from "../Contexts/ProductListContext";
 
 
 
 
 const Navbar = ({ cartData }) => {
+
+
+
+  const data = useContext(ProductContext);
+
+   //console.log(data);
+
+
 
   const fetchCartLength = () => {
 
@@ -18,7 +28,7 @@ const Navbar = ({ cartData }) => {
     <>
     <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div className="container-fluid">
-    <Link className="navbar-brand fw-bold" to="/">WEBSHOP 2024</Link>
+    <Link className="navbar-brand fw-bold" to="/">{ data? data.title : "WEBSHOP 2024"}</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

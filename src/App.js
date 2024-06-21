@@ -9,7 +9,8 @@ import Contact from './components/Contact';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
 import { useState, useEffect} from "react"
-import { getCartData } from "./utils/services"
+import { getCartData } from "./utils/services";
+import { ProductProvider } from './Contexts/ProductListContext';
 
 
 
@@ -33,6 +34,7 @@ function App() {
   return (
     <>
     <Router>
+      <ProductProvider>
     <Navbar cartData={cartData}/>
     <Routes>
     <Route path="/" element={ <Home/>}/>
@@ -45,9 +47,9 @@ function App() {
         JSON.stringify([...cartData, p])
       )
     }}
-     />
-     }
-     />
+    />
+  }
+  />
      {/*function to handle updating cart product*/}
     <Route path="/cart" element={<Cart cartItems={cartData}  sendCartProducts ={(e) => {
       setCartData(e);
@@ -57,6 +59,7 @@ function App() {
     <Route path="/about" element={<About/>}/>
     <Route path="/contact" element={<Contact/>}/>
     </Routes>
+    </ProductProvider>
     </Router>
     </>
   );
